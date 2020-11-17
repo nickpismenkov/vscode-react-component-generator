@@ -1,0 +1,13 @@
+import React from {quotes}react{quotes};
+
+import styles from './{componentName}.module.scss';
+
+const {componentName}: React.FC = (props) => {
+  return (
+    <div>
+      Test content
+    </div>
+  );
+};
+
+export default {componentName};

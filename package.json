@@ -1,0 +1,157 @@
+{
+  "name": "typed-scss-modules-react-hooks-component-generator",
+  "displayName": "typed scss modules react hooks component generator",
+  "description": "Generates React component files automatically",
+  "version": "0.0.4",
+  "publisher": "npismenkov",
+  "author": {
+    "name": "Nikolay Pismenkov",
+    "email": "npismenkov@mail.ru"
+  },
+  "galleryBanner": {
+    "color": "#0273D4",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abdullahceylan/vscode-react-component-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abdullahceylan/vscode-react-component-generator/issues",
+    "email": "ben@abdullahceylan.com"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.29.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "vscode-react",
+    "react",
+    "react component",
+    "react generate component",
+    "redux",
+    "stateless",
+    "typescript"
+  ],
+  "activationEvents": [
+    "onCommand:extension.genReactContainerComponentFiles",
+    "onCommand:extension.genReactStatelessComponentFiles",
+    "onCommand:extension.genReactReduxContainerComponentFiles",
+    "onCommand:extension.genReactReduxStatelessComponentFiles"
+  ],
+  "main": "./out/src/extension",
+  "icon": "assets/images/icon.png",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "AC React Component Generator",
+      "properties": {
+        "ACReactComponentGenerator.global.quotes": {
+          "type": "string",
+          "enum": [
+            "single",
+            "double"
+          ],
+          "default": "single",
+          "description": "Options: `single` or `double` Result: `'`  or  `\"`"
+        },
+        "ACReactComponentGenerator.global.generateFolder": {
+          "type": "boolean",
+          "default": true,
+          "description": "Generate or not separate folder for newly created component"
+        },
+        "ACReactComponentGenerator.global.lifecycleType": {
+          "type": "string",
+          "default": "legacy",
+          "enum": [
+            "legacy",
+            "reactv16"
+          ],
+          "description": "The lifecycle type of generated component. `legacy` is contains componentWillReceiveProps, componentWillMount etc."
+        },
+        "ACReactComponentGenerator.mainFile.create": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to generate component's main file or not. e.g.: ComponentName.(extension)"
+        },
+        "ACReactComponentGenerator.mainFile.extension": {
+          "type": "string",
+          "default": "tsx",
+          "description": "The extension of generated component file"
+        },
+        "ACReactComponentGenerator.styleFile.create": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to generate component's style file or not. e.g.: ComponentName.(extension)"
+        },
+        "ACReactComponentGenerator.styleFile.type": {
+          "type": "string",
+          "enum": [
+            "styled-components (.ts)",
+            "emotion (.ts)",
+            "standard (.scss)",
+            "sass (.sass)",
+            "sass (.scss)",
+            "less (.less)"
+          ],
+          "default": "styled-components (.ts)",
+          "description": "The type of stylesheet file to create"
+        },
+        "ACReactComponentGenerator.styleFile.suffix": {
+          "type": "string",
+          "default": ".styles",
+          "description": "The suffix to add to the end of the stylesheet filename. Default: ComponentName.styles.(extension)"
+        },
+        "ACReactComponentGenerator.indexFile.create": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to generate component's index file or not. e.g.: index.(extension)"
+        },
+        "ACReactComponentGenerator.indexFile.extension": {
+          "type": "string",
+          "default": "ts",
+          "description": "The extension of generated component index file"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "extension.genReactStatelessComponentFiles",
+        "title": "New React Component"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.genReactStatelessComponentFiles",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.21",
+    "eslint": "^4.11.0",
+    "@types/node": "7.0.7",
+    "@types/mocha": "^2.2.42"
+  },
+  "dependencies": {
+    "change-case": "^3.0.2",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^0.30.0",
+    "rxjs": "^5.0.0-rc.1",
+    "lodash": "^4.17.11"
+  }
+}
